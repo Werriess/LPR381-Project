@@ -1,0 +1,7 @@
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.csproj.AssemblyReference.cache
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.csproj.CoreCompileInputs.cache
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\LPR381-Project.exe.config
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\LPR381-Project.exe
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\LPR381-Project.pdb
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.exe
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.pdb

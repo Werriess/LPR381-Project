@@ -10,6 +10,8 @@ namespace LPR381_Project
     {
         static void Main(string[] args)
         {
+            Menu app = new Menu();
+            app.Run();
         }
     }
 }
