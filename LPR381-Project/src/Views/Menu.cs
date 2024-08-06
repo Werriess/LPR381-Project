@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LPR381_Project.src.Utils;
 
 namespace LPR381_Project
 {
@@ -11,7 +12,7 @@ namespace LPR381_Project
         public void Run()
         {
             Console.WriteLine("---------------------------\n" +
-                "Welcome to the the ALGO app !\n" +
+                "Welcome to the our ALGO app !\n" +
                 "---------------------------"
                 );
 
@@ -29,6 +30,8 @@ namespace LPR381_Project
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Lets go!");
+                        FileParser reader = new FileParser();
+                        reader.ReadFile();
                         menu = false;
                         break;
 
