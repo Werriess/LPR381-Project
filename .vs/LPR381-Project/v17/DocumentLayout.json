@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|c:\\users\\werne\\onedrive\\desktop\\belgium campus\\third year\\lpr381\\lpr381-project\\lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1257226031:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FileParser.cs",
+              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Utils\\FileParser.cs",
+              "RelativeDocumentMoniker": "LPR381-Project\\src\\Utils\\FileParser.cs",
+              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Utils\\FileParser.cs",
+              "RelativeToolTip": "LPR381-Project\\src\\Utils\\FileParser.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAADwvx8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T09:23:23.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\Program.cs",
+              "RelativeDocumentMoniker": "LPR381-Project\\Program.cs",
+              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\Program.cs",
+              "RelativeToolTip": "LPR381-Project\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T11:39:35.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Views\\Menu.cs",
+              "RelativeDocumentMoniker": "LPR381-Project\\src\\Views\\Menu.cs",
+              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Views\\Menu.cs",
+              "RelativeToolTip": "LPR381-Project\\src\\Views\\Menu.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwA4AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-31T11:39:51.993Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 325,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
