@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LPR381_Project.src.Utils;
+using LPR381_Project.src.Models;
 
 namespace LPR381_Project
 {
@@ -38,6 +39,8 @@ namespace LPR381_Project
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Thank you for using our application");
+                        SimplexAlgo test = new SimplexAlgo();
+                        test.Simplex();
                         menu = false;
                         break;
                 }
