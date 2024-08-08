@@ -12,14 +12,14 @@ namespace LPR381_Project.src.Models
         {
             List<float> ratioList = new List<float>();
 
-            int[,] data = {
+            float[,] data = {
                 { -2, -3, -3, -5, -2, -4, 0, 0 },
                 { 11, 8, 6, 14, 10, 10, 1, 40 },
                 { 5, 8, 7, 14, 11, 13, 1, 20 },
                 { 9, 6, 4, 10, 4, 10, 1, 4 }
             };
 
-            int minValue = data[0, 0];
+            float minValue = data[0, 0];
             int pivotCol = 0;
 
             for (int j = 1; j < data.GetLength(1); j++)
@@ -56,7 +56,7 @@ namespace LPR381_Project.src.Models
                 }
             }
 
-            int crossSection = data[pivotRow + 1, pivotCol];
+            float crossSection = data[pivotRow + 1, pivotCol];
 
             for (int j = pivotRow + 1; j < data.GetLength(0); j++)
             {
@@ -64,9 +64,28 @@ namespace LPR381_Project.src.Models
                 {
                     float result = (float)data[j, k] / crossSection;
                     Console.WriteLine($"Row {j + 1}, Col {k}: {result}");
+                    data[j, k] = (int)result;
                 }
             }
-        }
 
+            for (int i = 0; i < pivotRow; i++)
+            {
+                for (int j = 0; j < data.GetLength(1); j++)
+                {
+                    data[i, j] = data[i, j] - (data[i, pivotCol] * data[pivotRow,j]);
+
+
+                };
+            }
+
+            for (int i = 0; i < data.GetLength(0); i++)
+            {
+                for(int j = 0;j < data.GetLength(1); j++)
+                {
+                    Console.Write(data[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
