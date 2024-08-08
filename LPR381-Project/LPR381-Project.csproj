@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Models\SimplexAlgo.cs" />
     <Compile Include="src\Utils\FileParser.cs" />
     <Compile Include="src\Views\Menu.cs" />
     <Compile Include="Program.cs" />
