@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LPR381_Project.src.Models
@@ -11,13 +12,16 @@ namespace LPR381_Project.src.Models
         public void Simplex()
         {
             List<float> ratioList = new List<float>();
+            List<float> test = new List<float>();
 
             float[,] data = {
-                { -2, -3, -3, -5, -2, -4, 0, 0 },
-                { 11, 8, 6, 14, 10, 10, 1, 40 },
-                { 5, 8, 7, 14, 11, 13, 1, 20 },
-                { 9, 6, 4, 10, 4, 10, 1, 4 }
+                { -2f, -3f, -3f, -5f, -2f, -4f, 0f, 0f, 0f, 0f },
+                { 11f, 8f, 6f, 14f, 10f, 10f, 1f, 0f, 0f, 40f },
+                { 5f, 8f, 7f, 14f, 11f, 13f, 0f,1f, 0f, 20f },
+                { 9f, 6f, 4f, 10f, 4f, 10f, 0f, 0f, 1f, 4f }
             };
+
+            float[,] tableIteration = new float[data.GetLength(0), data.GetLength(1)];
 
             float minValue = data[0, 0];
             int pivotCol = 0;
@@ -62,27 +66,35 @@ namespace LPR381_Project.src.Models
             {
                 for (int k = 0; k < data.GetLength(1); k++)
                 {
-                    float result = (float)data[j, k] / crossSection;
+                    float result = data[j, k] / crossSection;
+                    data[j,k] = result;
                     Console.WriteLine($"Row {j + 1}, Col {k}: {result}");
-                    data[j, k] = (int)result;
                 }
             }
 
-            for (int i = 0; i < pivotRow; i++)
+
+            for (int i = 0; i < pivotRow+1; i++)
             {
                 for (int j = 0; j < data.GetLength(1); j++)
                 {
-                    data[i, j] = data[i, j] - (data[i, pivotCol] * data[pivotRow,j]);
-
-
+                    tableIteration[i,j] = data[i, j] - (data[i, pivotCol] * data[pivotRow+1,j]);
+                    
                 };
             }
 
-            for (int i = 0; i < data.GetLength(0); i++)
+            for (int i = pivotRow+1; i < data.GetLength(0); i++)
             {
-                for(int j = 0;j < data.GetLength(1); j++)
+                for (int j = 0;j < data.GetLength(1); j++)
                 {
-                    Console.Write(data[i, j] + "\t");
+                    tableIteration[i, j] = data[i, j];
+                }
+            }
+
+            for (int i = 0; i < tableIteration.GetLength(0); i++)
+            {
+                for (int j = 0; j < tableIteration.GetLength(1); j++)
+                {
+                    Console.Write(tableIteration[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
