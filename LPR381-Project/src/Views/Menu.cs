@@ -18,6 +18,7 @@ namespace LPR381_Project
                 );
 
             Console.WriteLine("Press 1 for the simplex algorithm");
+            Console.WriteLine("Press 2 for Knapsack");
             Console.WriteLine("Press 0 to exit");
 
             int input = int.Parse(Console.ReadLine());
@@ -28,7 +29,7 @@ namespace LPR381_Project
             {
                 switch (input)
                 {
-                    case 1:
+                    case 0:
                         Console.Clear();
                         Console.WriteLine("Lets go!");
                         FileParser reader = new FileParser();
@@ -36,13 +37,24 @@ namespace LPR381_Project
                         menu = false;
                         break;
 
-                    case 0:
+                    case 1:
                         Console.Clear();
                         Console.WriteLine("Thank you for using our application");
                         SimplexAlgo test = new SimplexAlgo();
                         test.Simplex();
                         menu = false;
                         break;
+
+                    case 2:
+                        Console.Clear();
+                        Knapsack knapsack = new Knapsack();
+                        knapsack.KnapsackTest();
+                        menu = false;
+                    break;
+
+                    default:
+                        Console.WriteLine("Something went wrong");
+                    break;
                 }
             }
 
