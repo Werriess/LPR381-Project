@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Models\Cutting Plane.cs" />
     <Compile Include="src\Models\Knapsack.cs" />
     <Compile Include="src\Models\SimplexAlgo.cs" />
     <Compile Include="src\Utils\FileParser.cs" />
