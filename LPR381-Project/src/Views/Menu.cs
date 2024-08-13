@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LPR381_Project.src.Utils;
 using LPR381_Project.src.Models;
+using LPR381_Project.src.Models.Tester;
 
 namespace LPR381_Project
 {
@@ -32,14 +33,13 @@ namespace LPR381_Project
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Lets go!");
-                        FileParser reader = new FileParser();
+                        FileParser reader = new FileParser("Test.txt");
                         reader.ReadFile();
                         menu = false;
                         break;
 
                     case 1:
                         Console.Clear();
-                        Console.WriteLine("Thank you for using our application");
                         SimplexAlgo test = new SimplexAlgo();
                         test.Simplex();
                         menu = false;
@@ -48,7 +48,8 @@ namespace LPR381_Project
                     case 2:
                         Console.Clear();
                         Knapsack knapsack = new Knapsack();
-                        knapsack.KnapsackTest();
+                        KnapOrginal knapOriginal = new KnapOrginal();
+                        knapOriginal.KnapSackRound(40);
                         menu = false;
                     break;
 
