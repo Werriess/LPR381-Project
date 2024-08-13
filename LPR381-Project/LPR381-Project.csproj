@@ -43,9 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Models\Cutting Plane.cs" />
-    <Compile Include="src\Models\Knapsack.cs" />
+    <Compile Include="src\Models\CuttingPlane.cs" />
+    <Compile Include="src\Models\Tester\Item.cs" />
+    <Compile Include="src\Models\Tester\KnapOrginal.cs" />
+    <Compile Include="src\Models\Tester\KnapSubOne.cs" />
+    <Compile Include="src\Models\Tester\KnapSubTwo.cs" />
     <Compile Include="src\Models\SimplexAlgo.cs" />
+    <Compile Include="src\Utils\CanonicalForm.cs" />
     <Compile Include="src\Utils\FileParser.cs" />
     <Compile Include="src\Views\Menu.cs" />
     <Compile Include="Program.cs" />

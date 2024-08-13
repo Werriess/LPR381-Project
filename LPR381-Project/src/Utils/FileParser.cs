@@ -6,50 +6,30 @@ namespace LPR381_Project.src.Utils
 {
     internal class FileParser
     {
-        public List<string> data = new List<string>();
-        public List<string[]> splitData = new List<string[]>();
-        public bool maximise = false;
-        public Dictionary<int, int> slack = new Dictionary<int, int>();
-        public float[,] tableau;
+        public bool maximize;
+        public bool minimize;
+        public List<string> myLines;
+        public string filePath;
+
+        public FileParser(string filePath)
+        {
+            this.filePath = filePath;
+            this.myLines = new List<string>();
+        }
+
 
         public void ReadFile()
         {
             try
             {
-                using (StreamReader reader = new StreamReader("Test.txt"))
+                using (StreamReader sr = new StreamReader(filePath))
                 {
                     string line;
-                    int lineIndex = 0;
-                    while ((line = reader.ReadLine()) != null)
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        data.Add(line);
-                        if (line.Contains("max"))
-                        {
-                            maximise = true;
-                        }
-                        if (line.Contains("<="))
-                        {
-                            slack[lineIndex] = 1; 
-                        }
-                        lineIndex++;
+                        myLines.Add(line);
                     }
                 }
-
-                foreach (var s in slack)
-                {
-                    int index = s.Key;
-                    data[index] = data[index].Replace("<=", "+1 <=");
-                }
-
-                string[] separator = { "+", "<=", "max" };
-
-                for (int i = 0; i < data.Count; i++)
-                {
-                    string[] splitLine = data[i].Split(separator, StringSplitOptions.RemoveEmptyEntries);
-                    splitData.Add(splitLine);
-                }
-
-                Console.WriteLine(data[0]);
             }
             catch (Exception e)
             {
