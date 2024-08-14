@@ -47,7 +47,6 @@ namespace LPR381_Project
 
                     case 2:
                         Console.Clear();
-                        Knapsack knapsack = new Knapsack();
                         KnapOrginal knapOriginal = new KnapOrginal();
                         knapOriginal.KnapSackRound(40);
                         menu = false;
