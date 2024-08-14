@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using LPR381_Project.src.Models.Tester;
 
 namespace LPR381_Project.src.Models.Tester
@@ -12,28 +13,11 @@ namespace LPR381_Project.src.Models.Tester
 
             GetItems();
             SortRatios();
-            for (int i = 0; i < myItems.Count; i++)
-            {
-                if(myItems[i].Chosen == 1)
-                {
-                    maxWeight -= myItems[i].Weight;
-                    myItems[i].Subtract = maxWeight;
-                }
-            }
-
+            SubtractWeights(maxWeight);
+            BranchKnap(maxWeight);
             foreach (Item item in myItems)
             {
                 Console.WriteLine($"{item.Name}: {Math.Round(item.Ratio,2)} {item.Chosen} {item.Subtract}");
-            }
-
-            for (int i = 0; i < myItems.Count; i++)
-            {
-                if (myItems[i].Subtract < 0)
-                {
-                    BranchOnInclude(myItems[i].Name);
-                    BranchOnExclude(myItems[i].Name);
-                    break;
-                }
             }
         }
 
@@ -72,6 +56,41 @@ namespace LPR381_Project.src.Models.Tester
                 if (myItems[i].Name == exclude)
                 {
                     myItems[i].Chosen = 0;
+                }
+            }
+        }
+
+        public string BranchOn()
+        {
+            string branch = string.Empty;
+            for (int i = 0; i < myItems.Count; i++)
+            {
+                if (myItems[i].Subtract < 0)
+                {
+                    branch = myItems[i].Name;
+                    break;
+                }
+            }
+            return branch;
+        }
+
+        public void BranchKnap(float maxWeight)
+        {
+            string variable = BranchOn();
+            BranchOnInclude(variable);
+            BranchOnExclude(variable);
+            SubtractWeights(maxWeight);
+
+        }
+
+        public void SubtractWeights(float maxWeight)
+        {
+            for (int i = 0; i < myItems.Count; i++)
+            {
+                if (myItems[i].Chosen == 1)
+                {
+                    maxWeight -= myItems[i].Weight;
+                    myItems[i].Subtract = maxWeight;
                 }
             }
         }

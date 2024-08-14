@@ -8,14 +8,19 @@ namespace LPR381_Project.src.Models
         public void Simplex()
         {
             float[,] data = {
-                { -2f, -3f, -3f, -5f, -2f, -4f, 0f, 0f, 0f, 0f },
-                { 11f, 8f, 6f, 14f, 10f, 10f, 1f, 0f, 0f, 40f },
-                { 5f, 8f, 7f, 14f, 11f, 13f, 0f,1f, 0f, 20f },
-                { -9f, -6f, -4f, -10f, -4f, -10f, 0f, 0f, 1f, -4f }
+                { -2f, -3f, -3f, -5f, -2f, -4f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f },
+                { 11f, 8f, 6f, 14f, 10f, 10f, 1f, 0f, 0f, 0f, 0f, 0f, 0f,40f },
+                { 1f, 0f, 0f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 0f, 1f },
+                { 0f, 1f, 0f, 0f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f },
+                { 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 1f, 0f, 0f, 0f, 1f },
+                { 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f, 0f, 0f, 1f, 0f, 0f, 1f },
+                { 0f, 0f, 0f, 0f, 1f, 0f, 0f, 1f, 0f, 0f, 0f, 1f, 0f, 1f },
+                { 0f, 0f, 0f, 0f, 0f, 1f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 1f },
             };
 
             float[,] nextTab = new float[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = true;
+            bool maximize = true;
 
             while (true)
             {
@@ -57,7 +62,6 @@ namespace LPR381_Project.src.Models
 
                     NormalizeTable(data, nextTab, pivotRow, pivotCol);
                 }
-
                 PrintTableau(nextTab);
                 Array.Copy(nextTab, data, nextTab.Length);
             }
@@ -218,6 +222,58 @@ namespace LPR381_Project.src.Models
                 Console.WriteLine();
             }
             Console.WriteLine();
+        }
+
+        public float[,] BranchAndBound()
+        {
+            float[,] data = {
+                { -8f,-5f, 0f, 0f, 0f},
+                { 1f, 1f, 1f, 0f, 6f },
+                { 9f, 5f, 0f, 1f, 45f }
+            };
+
+            float[,] nextTab = new float[data.GetLength(0), data.GetLength(1)];
+            bool dualSimplex = true;
+
+            while (true)
+            {
+                if (dualSimplex)
+                {
+                    if (!LeastNegativeInRhs(data))
+                    {
+                        dualSimplex = false;
+                        continue;
+                    }
+                    else if (!MostNegativeInObj(data))
+                    {
+                        break;
+                    }
+
+                    int pivotRow = GetDualPivotRow(data);
+                    int pivotCol = GetDualPivotCol(data, pivotRow);
+
+                    if (pivotRow == -1 || pivotCol == -1)
+                    {
+                        break;
+                    }
+
+                    NormalizeTable(data, nextTab, pivotRow, pivotCol);
+                }
+                else
+                {
+                    if (!MostNegativeInObj(data))
+                    {
+                        break;
+                    }
+
+                    int pivotCol = GetPivotCol(data);
+                    int pivotRow = GetPivotRow(data, pivotCol);
+
+                    NormalizeTable(data, nextTab, pivotRow, pivotCol);
+                }
+                Array.Copy(nextTab, data, nextTab.Length);
+            }
+            return data;
         }
     }
 }
