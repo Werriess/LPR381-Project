@@ -11,34 +11,54 @@ namespace LPR381_Project.src.Models
                 { -2f, -3f, -3f, -5f, -2f, -4f, 0f, 0f, 0f, 0f },
                 { 11f, 8f, 6f, 14f, 10f, 10f, 1f, 0f, 0f, 40f },
                 { 5f, 8f, 7f, 14f, 11f, 13f, 0f,1f, 0f, 20f },
-                { 9f, 6f, 4f, 10f, 4f, 10f, 0f, 0f, 1f, 4f }
+                { -9f, -6f, -4f, -10f, -4f, -10f, 0f, 0f, 1f, -4f }
             };
 
             float[,] nextTab = new float[data.GetLength(0), data.GetLength(1)];
-
+            bool dualSimplex = true;
 
             while (true)
             {
-                if (!MostNegativeInObj(data))
+                if (dualSimplex)
                 {
-                    Console.WriteLine("Optimal solution reached.");
-                    break;
-                }
+                    if (!LeastNegativeInRhs(data))
+                    {
+                        dualSimplex = false;
+                        Console.WriteLine("Switching to regular Simplex.");
+                        continue;
+                    }
+                    else if (!MostNegativeInObj(data))
+                    {
+                        Console.WriteLine("Optimal solution reached.");
+                        break;
+                    }
 
-                if(!LeastNegativeInRhs(data))
+                    int pivotRow = GetDualPivotRow(data);
+                    int pivotCol = GetDualPivotCol(data, pivotRow);
+
+                    if (pivotRow == -1 || pivotCol == -1)
+                    {
+                        Console.WriteLine("No valid pivot element found.");
+                        break;
+                    }
+
+                    NormalizeTable(data, nextTab, pivotRow, pivotCol);
+                }
+                else
                 {
-                    Console.WriteLine("Infeasible");
+                    if (!MostNegativeInObj(data))
+                    {
+                        Console.WriteLine("Optimal solution reached.");
+                        break;
+                    }
+
+                    int pivotCol = GetPivotCol(data);
+                    int pivotRow = GetPivotRow(data, pivotCol);
+
+                    NormalizeTable(data, nextTab, pivotRow, pivotCol);
                 }
-
-                GetDualPivotRow(data);
-
-                int pivotCol = GetPivotCol(data);
-                int pivotRow = GetPivotRow(data, pivotCol);
-
-                NormalizeTable(data, nextTab, pivotRow, pivotCol);
 
                 PrintTableau(nextTab);
-
                 Array.Copy(nextTab, data, nextTab.Length);
             }
         }
@@ -57,27 +77,28 @@ namespace LPR381_Project.src.Models
 
         private bool LeastNegativeInRhs(float[,] data)
         {
-            for(int i = 0; i < data.GetLength(0); i++)
+            for (int i = 1; i < data.GetLength(0); i++)
             {
-                if (data[i,data.GetLength(1) -1] < 0)
+                if (data[i, data.GetLength(1) - 1] < 0)
                 {
                     return true;
                 }
             }
-            return false; 
+            return false;
         }
 
         private int GetDualPivotRow(float[,] data)
         {
-            int lastCol= data.GetLength(1) -1; 
+            //Get largest negative value in RHS
+            int lastCol = data.GetLength(1) - 1;
             int pivotRow = -1;
-            float notNull = 0;
+            float mostNegativeValue = 0;
 
             for (int i = 1; i < data.GetLength(0); i++)
             {
-                if (data[i, lastCol] < notNull)
+                if (data[i, lastCol] < mostNegativeValue)
                 {
-                    notNull = data[i, lastCol];
+                    mostNegativeValue = data[i, lastCol];
                     pivotRow = i;
                 }
             }
@@ -85,13 +106,38 @@ namespace LPR381_Project.src.Models
             return pivotRow;
         }
 
+        private int GetDualPivotCol(float[,] data, int pivotRow)
+        {
+            /*Get the pivot col by dividing the corresponding obj row with the negative values in the pivot row. Using the absolute value, 
+             * we choose the number closesest to zer0
+            */
+            float smallestRatio = float.MaxValue;
+            int pivotCol = -1;
+
+            for (int i = 0; i < data.GetLength(1) - 1; i++)
+            {
+                if (data[pivotRow, i] < 0)
+                {
+                    float ratio = Math.Abs(data[0, i] / data[pivotRow, i]);
+
+                    if (ratio < smallestRatio)
+                    {
+                        smallestRatio = ratio;
+                        pivotCol = i;
+                    }
+                }
+            }
+
+            return pivotCol;
+        }
 
         private int GetPivotCol(float[,] data)
         {
+            //For a max problem, get the biggest negative value in obj row
             float minValue = data[0, 0];
             int pivotCol = 0;
 
-            for (int j = 1; j < data.GetLength(1); j++)
+            for (int j = 1; j < data.GetLength(1) - 1; j++)
             {
                 if (data[0, j] < minValue)
                 {
@@ -105,6 +151,8 @@ namespace LPR381_Project.src.Models
 
         private int GetPivotRow(float[,] data, int pivotCol)
         {
+            //Here we ratio test by dividing the RHS values with the pivot col in order to get the pivot row.
+            //The most positive value closest to zero is chosen
             List<float> ratioList = new List<float>();
             int lastIndex = data.GetLength(1) - 1;
 
@@ -136,30 +184,26 @@ namespace LPR381_Project.src.Models
             return pivotRow + 1;
         }
 
-        private void NormalizeTable(float[,] data, float[,] tableIteration, int pivotRow, int pivotCol)
+        private void NormalizeTable(float[,] data, float[,] nextTab, int pivotRow, int pivotCol)
         {
             float crossSection = data[pivotRow, pivotCol];
-
-            // Normalize the pivot row
+            //Here we use the crosssection to firstly normalize the pivotrow by dividing the crossection value in the old table with the new values in new table
             for (int j = 0; j < data.GetLength(1); j++)
             {
-                data[pivotRow, j] /= crossSection;
+                nextTab[pivotRow, j] = data[pivotRow, j] / crossSection;
             }
-
+            /*Normalize the rest of the table by subtracting each value in the old table except the pivot row values, with the product of the the value in the pivot col with the correspoding value in
+             * pivot row in the new table
+             */
             for (int i = 0; i < data.GetLength(0); i++)
             {
                 if (i != pivotRow)
                 {
                     for (int j = 0; j < data.GetLength(1); j++)
                     {
-                        tableIteration[i, j] = data[i, j] - (data[i, pivotCol] * data[pivotRow, j]);
+                        nextTab[i, j] = data[i, j] - (data[i, pivotCol] * nextTab[pivotRow, j]);
                     }
                 }
-            }
-
-            for (int j = 0; j < data.GetLength(1); j++)
-            {
-                tableIteration[pivotRow, j] = data[pivotRow, j];
             }
         }
 
