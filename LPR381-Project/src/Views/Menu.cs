@@ -18,9 +18,9 @@ namespace LPR381_Project
                 "---------------------------"
                 );
 
-            Console.WriteLine("Press 1 for the simplex algorithm");
+            Console.WriteLine("Press 1 for the Simplex Algorithm");
             Console.WriteLine("Press 2 to Branch and Bound");
-            Console.WriteLine("Press 3 to solve cutting plane");
+            Console.WriteLine("Press 3 to Solve Cutting Plane");
             Console.WriteLine("Press 4 for Knapsack");
             Console.WriteLine("Press 0 to exit");
 
@@ -59,8 +59,19 @@ namespace LPR381_Project
                         }
 
                         test.Simplex(canonicalForm);
+                        Console.WriteLine("\nPress 0 to go back");
+                        int inputSS = int.Parse(Console.ReadLine());
 
-                        menu = false;
+                        if (inputSS == 0)
+                        {
+                            Console.Clear();
+                            Run();
+                        }
+                        else
+                        {
+                            menu = false;
+                            Console.WriteLine("Invalid input");
+                        }
                         break;
 
                     case 2:
@@ -76,12 +87,24 @@ namespace LPR381_Project
                                             { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
                                             { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
             };
-
+                        int vCount = FileParser.GetNumberOfVariables("lp_model.txt");
                         BranchAndBound b = new BranchAndBound();
-                        b.SolveBB(dataT.BranchAndBound(dat), 6, 15);
-                        menu = false;
-                        break;
+                        b.SolveBB(dataT.BranchAndBound(dat), vCount, 15);
 
+                        Console.WriteLine("\nPress 0 to go back");
+                        int inputBB = int.Parse(Console.ReadLine());
+
+                        if(inputBB == 0)
+                        {
+                            Console.Clear();
+                            Run();
+                        }
+                        else
+                        {
+                            menu = false;
+                            Console.WriteLine("Invalid input");
+                        }
+                        break;
                     case 3:
                         Console.Clear();
                         CuttingPlane plane = new CuttingPlane();
@@ -96,16 +119,42 @@ namespace LPR381_Project
                                             { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
                                             { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
             };
-                        double[,] cuttingPlaneResult = plane.SolveCuttingPlane(sAlgo.BranchAndBound(dataNew), 6);
+                        int vCountTwo = FileParser.GetNumberOfVariables("lp_model.txt");
+                        double[,] cuttingPlaneResult = plane.SolveCuttingPlane(sAlgo.BranchAndBound(dataNew), vCountTwo);
                         sAlgo.Simplex(cuttingPlaneResult);
-                        menu = false;
+                        Console.WriteLine("\nPress 0 to go back");
+                        int inputCP = int.Parse(Console.ReadLine());
+
+                        if (inputCP == 0)
+                        {
+                            Console.Clear();
+                            Run();
+                        }
+                        else
+                        {
+                            menu = false;
+                            Console.WriteLine("Invalid input");
+                        }
                         break;
 
                     case 4:
                         Console.Clear();
                         KnapOrginal kp = new KnapOrginal();
                         kp.KnapSackRound(40);
-                        menu = false;
+
+                        Console.WriteLine("\nPress 0 to go back");
+                        int inputKP = int.Parse(Console.ReadLine());
+
+                        if (inputKP == 0)
+                        {
+                            Console.Clear();
+                            Run();
+                        }
+                        else
+                        {
+                            menu = false;
+                            Console.WriteLine("Invalid input");
+                        }
                     break;
 
                     default:
