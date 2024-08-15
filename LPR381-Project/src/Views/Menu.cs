@@ -52,7 +52,7 @@ namespace LPR381_Project
                                             { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
                                             { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
                                             { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
-                        };
+            };
                         test.Simplex(data);
                         menu = false;
                         break;
@@ -60,16 +60,38 @@ namespace LPR381_Project
                     case 2:
                         Console.Clear();
                         SimplexAlgo dataT = new SimplexAlgo();
-                        double[,] intTable = dataT.BranchAndBound();
+                        double[,] dat = {
+                                            { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                            { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
+                                            { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+                                            { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                                            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+                                            { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+                                            { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+                                            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
+            };
+
                         BranchAndBound b = new BranchAndBound();
-                        b.SolveBB(intTable, 6, 15);
+                        b.SolveBB(dataT.BranchAndBound(dat), 6, 15);
                         menu = false;
                         break;
 
                     case 3:
                         Console.Clear();
                         CuttingPlane plane = new CuttingPlane();
-                        plane.SolveCuttingPlane();
+                        SimplexAlgo sAlgo = new SimplexAlgo();
+                        double[,] dataNew = {
+                                            { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                            { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
+                                            { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+                                            { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                                            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+                                            { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+                                            { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+                                            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
+            };
+                        double[,] cuttingPlaneResult = plane.SolveCuttingPlane(sAlgo.BranchAndBound(dataNew), 6);
+                        sAlgo.Simplex(cuttingPlaneResult);
                         menu = false;
                         break;
 

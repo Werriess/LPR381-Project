@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,10 @@ namespace LPR381_Project.src.Models
     {
         public void SolveBB(double[,] data, int xVar, int counter)
         {
-            LessThanBranch(xVar);
-            GreaterThanBranch(xVar);
-
-            if(counter >= 0)
-            {
-                SolveBB(data, xVar, counter - 1);
-            }
+            SimplexAlgo sl = new SimplexAlgo();
+            sl.Simplex(GreaterThanBranch(data, 6));
+            sl.Simplex(LessThanBranch(data, 6));
+            
         }
 
         public List<int> FindNonInt(double[,] data)
@@ -67,7 +65,7 @@ namespace LPR381_Project.src.Models
             return bVar;
         }
 
-        private int GetBranchRow(double[,] data, int xVar)
+        public int GetBranchRow(double[,] data, int xVar)
         {
             int bvCol = GetBasicVariables(data, xVar);
             int bvRow = 0;
@@ -81,11 +79,8 @@ namespace LPR381_Project.src.Models
             return bvRow;
         }
 
-        private void LessThanBranch(int xVar)
+        private double[,] LessThanBranch(double[,] data, int xVar)
         {
-            SimplexAlgo s = new SimplexAlgo();
-            double[,] data = s.BranchAndBound();
-
             int originalRows = data.GetLength(0);
             int cols = data.GetLength(1);
             int newRows = originalRows + 1;
@@ -112,7 +107,7 @@ namespace LPR381_Project.src.Models
             tester2[originalRows, secondLastColIndex] += 1;
 
             int rowToSubtractFrom = originalRows;
-            int rowToSubtract = 1;
+            int rowToSubtract = GetBranchRow(data, xVar);
 
             Vector<double> rowFrom = tester2.Row(rowToSubtract);
             Vector<double> rowSubtract = tester2.Row(rowToSubtractFrom);
@@ -122,15 +117,12 @@ namespace LPR381_Project.src.Models
             tester2.SetRow(rowToSubtractFrom, resultRow);
 
             Console.WriteLine(tester2.ToString());
-
-                
+            double[,] ekWeetNieMeerNie = tester2.ToArray();
+            return ekWeetNieMeerNie;
         }
 
-        public void GreaterThanBranch(int xVar)
+        public double[,] GreaterThanBranch(double[,] data, int xVar)
         {
-            SimplexAlgo s = new SimplexAlgo();
-            double[,] data = s.BranchAndBound();
-
             int originalRows = data.GetLength(0);
             int cols = data.GetLength(1);
             int newRows = originalRows + 1;
@@ -158,7 +150,7 @@ namespace LPR381_Project.src.Models
             tester2[originalRows, lastColIndex] += 1;
 
             int rowToSubtractFrom = originalRows;
-            int rowToSubtract = 1;
+            int rowToSubtract = GetBranchRow(data, xVar); 
 
             Vector<double> rowFrom = tester2.Row(rowToSubtract);
             Vector<double> rowSubtract = tester2.Row(rowToSubtractFrom); 
@@ -168,6 +160,8 @@ namespace LPR381_Project.src.Models
             tester2.SetRow(rowToSubtractFrom, resultRow);
 
             Console.WriteLine(tester2.ToString());
+            double[,] ekWeetNieMeerNie = tester2.ToArray();
+            return ekWeetNieMeerNie;
         }
 
     }
