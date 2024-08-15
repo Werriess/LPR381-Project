@@ -8,12 +8,11 @@ namespace LPR381_Project.src.Models.Tester
     internal class KnapOrginal
     {
         public List<Item> myItems = new List<Item>();
-        public void KnapSackRound(float maxWeight)
+        public void KnapSackRound(double maxWeight)
         {
 
             GetItems();
             SortRatios();
-            SubtractWeights(maxWeight);
             BranchKnap(maxWeight);
             foreach (Item item in myItems)
             {
@@ -23,12 +22,12 @@ namespace LPR381_Project.src.Models.Tester
 
         public void GetItems()
         {
-            Item itemOne = new Item("x1", 1, 2f, 11f, 1, 0f);
-            Item itemTwo = new Item("x2", 1, 3f, 8f, 1, 0f);
-            Item itemThree = new Item("x3", 1, 3f, 6f, 1, 0f);
-            Item itemFour = new Item("x4", 1, 5f, 14f, 1, 0f);
-            Item itemFive = new Item("x5", 1, 2f, 10f, 1, 0f);
-            Item itemSix = new Item("x6", 1, 4f, 10f, 1, 0f);
+            Item itemOne = new Item("x1", 1, 2, 11, 1, 0);
+            Item itemTwo = new Item("x2", 1, 3, 8, 1, 0);
+            Item itemThree = new Item("x3", 1, 3, 6, 1, 0);
+            Item itemFour = new Item("x4", 1, 5, 14, 1, 0);
+            Item itemFive = new Item("x5", 1, 2, 10, 1, 0);
+            Item itemSix = new Item("x6", 1, 4, 10, 1, 0);
 
             myItems.Add(itemOne);
             myItems.Add(itemTwo);
@@ -38,7 +37,7 @@ namespace LPR381_Project.src.Models.Tester
             myItems.Add(itemSix);
         }
 
-        public void BranchOnInclude(string include)
+        public void BranchOnInclude(string include, double maxWeight)
         {
             for (int i = 0; i < myItems.Count; i++)
             {
@@ -47,9 +46,11 @@ namespace LPR381_Project.src.Models.Tester
                     myItems[i].Chosen = 1;
                 }
             }
+            SubtractWeights(maxWeight);
+  
         }
 
-        public void BranchOnExclude(string exclude)
+        public void BranchOnExclude(string exclude, double maxWeight)
         {
             for (int i = 0; i < myItems.Count; i++)
             {
@@ -58,6 +59,9 @@ namespace LPR381_Project.src.Models.Tester
                     myItems[i].Chosen = 0;
                 }
             }
+
+            SubtractWeights(maxWeight);
+
         }
 
         public string BranchOn()
@@ -74,16 +78,14 @@ namespace LPR381_Project.src.Models.Tester
             return branch;
         }
 
-        public void BranchKnap(float maxWeight)
+        public void BranchKnap(double maxWeight)
         {
             string variable = BranchOn();
-            BranchOnInclude(variable);
-            BranchOnExclude(variable);
-            SubtractWeights(maxWeight);
-
+            BranchOnInclude(variable, maxWeight);
+            BranchOnExclude(variable, maxWeight);
         }
 
-        public void SubtractWeights(float maxWeight)
+        public void SubtractWeights(double maxWeight)
         {
             for (int i = 0; i < myItems.Count; i++)
             {
