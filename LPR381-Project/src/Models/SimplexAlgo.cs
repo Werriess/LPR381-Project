@@ -213,19 +213,8 @@ namespace LPR381_Project.src.Models
             Console.WriteLine();
         }
 
-        public double[,] BranchAndBound()
+        public double[,] BranchAndBound(double[,] data)
         {
-            double[,] data = {
-                { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
-                { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
-                { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
-                { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
-                { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
-                { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
-                { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
-            };
-
             double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = true;
 
