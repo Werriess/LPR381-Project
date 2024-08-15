@@ -43,16 +43,26 @@ namespace LPR381_Project
                     case 1:
                         Console.Clear();
                         SimplexAlgo test = new SimplexAlgo();
-                        test.Simplex();
+                        double[,] data = {
+                                            { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                            { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
+                                            { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+                                            { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                                            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+                                            { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+                                            { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+                                            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
+                        };
+                        test.Simplex(data);
                         menu = false;
                         break;
 
                     case 2:
                         Console.Clear();
-                        SimplexAlgo data = new SimplexAlgo();
-                        double[,] intTable = data.BranchAndBound();
+                        SimplexAlgo dataT = new SimplexAlgo();
+                        double[,] intTable = dataT.BranchAndBound();
                         BranchAndBound b = new BranchAndBound();
-                        b.SolveBB(intTable);
+                        b.SolveBB(intTable, 6, 15);
                         menu = false;
                         break;
 

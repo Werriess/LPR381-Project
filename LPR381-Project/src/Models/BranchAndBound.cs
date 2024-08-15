@@ -10,24 +10,15 @@ namespace LPR381_Project.src.Models
 {
     internal class BranchAndBound
     {
-        public void SolveBB(double[,] data)
+        public void SolveBB(double[,] data, int xVar, int counter)
         {
-            LessThanBranch();
-            GreaterThanBranch();
-            
-            List<int> ints = FindNonInt(data);
+            LessThanBranch(xVar);
+            GreaterThanBranch(xVar);
 
-            foreach(int i in ints)
+            if(counter >= 0)
             {
-                Console.WriteLine(i);
+                SolveBB(data, xVar, counter - 1);
             }
-
-            List<int>bv = GetBasicVariables(data);
-            foreach(int i in bv)
-            {
-                Console.WriteLine(i);
-            }
-
         }
 
         public List<int> FindNonInt(double[,] data)
@@ -43,9 +34,9 @@ namespace LPR381_Project.src.Models
             return nonInt;
         }
 
-        public List<int> GetBasicVariables(double[,] arr)
+        public int GetBasicVariables(double[,] arr, int xVar)
         {
-            List<int> bVariables = new List<int>();
+            int bVar = 0;
             List<int> nonIntRows = FindNonInt(arr);
 
             for (int i = 0; i < arr.GetLength(1); i++)
@@ -67,17 +58,30 @@ namespace LPR381_Project.src.Models
                 }
 
                 // Only add if there is one 1 and the rest zero's
-                if (isBasicVariable && oneCount == 1)
+                //Only add xVariables that are non ints
+                if (isBasicVariable && oneCount == 1 && i <= xVar)
                 {
-                    bVariables.Add(i);
+                    bVar = i;
                 }
             }
-            return bVariables;
+            return bVar;
         }
 
+        private int GetBranchRow(double[,] data, int xVar)
+        {
+            int bvCol = GetBasicVariables(data, xVar);
+            int bvRow = 0;
+            for(int i = 0; i < data.GetLength(0); i++)
+            {
+                if (data[i, bvCol] == 1)
+                {
+                    bvRow = i;
+                }
+            }
+            return bvRow;
+        }
 
-
-        public void LessThanBranch()
+        private void LessThanBranch(int xVar)
         {
             SimplexAlgo s = new SimplexAlgo();
             double[,] data = s.BranchAndBound();
@@ -102,9 +106,10 @@ namespace LPR381_Project.src.Models
             tester2.SetColumn(secondLastColIndex, tester2.Column(lastColIndex));
             tester2.SetColumn(lastColIndex, Vector<double>.Build.Dense(tempColumn));
 
-            tester2[originalRows, 4] += 1;
+            int basicVColumn = GetBasicVariables(data, xVar);
+
+            tester2[originalRows, basicVColumn] += 1;
             tester2[originalRows, secondLastColIndex] += 1;
-            Console.WriteLine(tester2.ToString());
 
             int rowToSubtractFrom = originalRows;
             int rowToSubtract = 1;
@@ -121,7 +126,7 @@ namespace LPR381_Project.src.Models
                 
         }
 
-        public void GreaterThanBranch()
+        public void GreaterThanBranch(int xVar)
         {
             SimplexAlgo s = new SimplexAlgo();
             double[,] data = s.BranchAndBound();
@@ -146,13 +151,11 @@ namespace LPR381_Project.src.Models
             tester2.SetColumn(secondLastColIndex, tester2.Column(lastColIndex));
             tester2.SetColumn(lastColIndex, Vector<double>.Build.Dense(tempColumn));
 
-            Console.WriteLine(tester2.ToString());
+            int basicVColumn = GetBasicVariables(data, xVar);
 
-            tester2[originalRows, 4] += 1;
+            tester2[originalRows, basicVColumn] += 1;
             tester2[originalRows, secondLastColIndex] -= 1;
             tester2[originalRows, lastColIndex] += 1;
-
-            Console.WriteLine(tester2.ToString());
 
             int rowToSubtractFrom = originalRows;
             int rowToSubtract = 1;
