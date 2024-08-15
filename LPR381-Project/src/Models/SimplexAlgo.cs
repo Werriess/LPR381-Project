@@ -7,18 +7,18 @@ namespace LPR381_Project.src.Models
     {
         public void Simplex()
         {
-            float[,] data = {
-                { -2f, -3f, -3f, -5f, -2f, -4f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f },
-                { 11f, 8f, 6f, 14f, 10f, 10f, 1f, 0f, 0f, 0f, 0f, 0f, 0f,40f },
-                { 1f, 0f, 0f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 0f, 1f },
-                { 0f, 1f, 0f, 0f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f },
-                { 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 1f, 0f, 0f, 0f, 1f },
-                { 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f, 0f, 0f, 1f, 0f, 0f, 1f },
-                { 0f, 0f, 0f, 0f, 1f, 0f, 0f, 1f, 0f, 0f, 0f, 1f, 0f, 1f },
-                { 0f, 0f, 0f, 0f, 0f, 1f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 1f },
+            double[,] data = {
+                { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
+                { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+                { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+                { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+                { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+                { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
             };
 
-            float[,] nextTab = new float[data.GetLength(0), data.GetLength(1)];
+            double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = true;
             bool maximize = true;
 
@@ -67,7 +67,7 @@ namespace LPR381_Project.src.Models
             }
         }
 
-        private bool MostNegativeInObj(float[,] data)
+        private bool MostNegativeInObj(double[,] data)
         {
             for (int i = 0; i < data.GetLength(1) - 1; i++)
             {
@@ -79,7 +79,7 @@ namespace LPR381_Project.src.Models
             return false;
         }
 
-        private bool LeastNegativeInRhs(float[,] data)
+        private bool LeastNegativeInRhs(double[,] data)
         {
             for (int i = 1; i < data.GetLength(0); i++)
             {
@@ -91,12 +91,12 @@ namespace LPR381_Project.src.Models
             return false;
         }
 
-        private int GetDualPivotRow(float[,] data)
+        private int GetDualPivotRow(double[,] data)
         {
             //Get largest negative value in RHS
             int lastCol = data.GetLength(1) - 1;
             int pivotRow = -1;
-            float mostNegativeValue = 0;
+            double mostNegativeValue = 0;
 
             for (int i = 1; i < data.GetLength(0); i++)
             {
@@ -110,19 +110,19 @@ namespace LPR381_Project.src.Models
             return pivotRow;
         }
 
-        private int GetDualPivotCol(float[,] data, int pivotRow)
+        private int GetDualPivotCol(double[,] data, int pivotRow)
         {
             /*Get the pivot col by dividing the corresponding obj row with the negative values in the pivot row. Using the absolute value, 
              * we choose the number closesest to zer0
             */
-            float smallestRatio = float.MaxValue;
+            double smallestRatio = float.MaxValue;
             int pivotCol = -1;
 
             for (int i = 0; i < data.GetLength(1) - 1; i++)
             {
                 if (data[pivotRow, i] < 0)
                 {
-                    float ratio = Math.Abs(data[0, i] / data[pivotRow, i]);
+                    double ratio = Math.Abs(data[0, i] / data[pivotRow, i]);
 
                     if (ratio < smallestRatio)
                     {
@@ -135,10 +135,10 @@ namespace LPR381_Project.src.Models
             return pivotCol;
         }
 
-        private int GetPivotCol(float[,] data)
+        private int GetPivotCol(double[,] data)
         {
             //For a max problem, get the biggest negative value in obj row
-            float minValue = data[0, 0];
+            double minValue = data[0, 0];
             int pivotCol = 0;
 
             for (int j = 1; j < data.GetLength(1) - 1; j++)
@@ -153,27 +153,27 @@ namespace LPR381_Project.src.Models
             return pivotCol;
         }
 
-        private int GetPivotRow(float[,] data, int pivotCol)
+        private int GetPivotRow(double[,] data, int pivotCol)
         {
             //Here we ratio test by dividing the RHS values with the pivot col in order to get the pivot row.
             //The most positive value closest to zero is chosen
-            List<float> ratioList = new List<float>();
+            List<double> ratioList = new List<double>();
             int lastIndex = data.GetLength(1) - 1;
 
             for (int j = 1; j < data.GetLength(0); j++)
             {
                 if (data[j, pivotCol] > 0)
                 {
-                    float ratio = data[j, lastIndex] / data[j, pivotCol];
+                    double ratio = data[j, lastIndex] / data[j, pivotCol];
                     ratioList.Add(ratio);
                 }
                 else
                 {
-                    ratioList.Add(float.MaxValue);
+                    ratioList.Add(double.MaxValue);
                 }
             }
 
-            float minPivot = ratioList[0];
+            double minPivot = ratioList[0];
             int pivotRow = 0;
 
             for (int j = 1; j < ratioList.Count; j++)
@@ -188,9 +188,9 @@ namespace LPR381_Project.src.Models
             return pivotRow + 1;
         }
 
-        private void NormalizeTable(float[,] data, float[,] nextTab, int pivotRow, int pivotCol)
+        private void NormalizeTable(double[,] data, double[,] nextTab, int pivotRow, int pivotCol)
         {
-            float crossSection = data[pivotRow, pivotCol];
+            double crossSection = data[pivotRow, pivotCol];
             //Here we use the crosssection to firstly normalize the pivotrow by dividing the crossection value in the old table with the new values in new table
             for (int j = 0; j < data.GetLength(1); j++)
             {
@@ -211,7 +211,7 @@ namespace LPR381_Project.src.Models
             }
         }
 
-        private void PrintTableau(float[,] nextTab)
+        private void PrintTableau(double[,] nextTab)
         {
             for (int i = 0; i < nextTab.GetLength(0); i++)
             {
@@ -224,15 +224,20 @@ namespace LPR381_Project.src.Models
             Console.WriteLine();
         }
 
-        public float[,] BranchAndBound()
+        public double[,] BranchAndBound()
         {
-            float[,] data = {
-                { -8f,-5f, 0f, 0f, 0f},
-                { 1f, 1f, 1f, 0f, 6f },
-                { 9f, 5f, 0f, 1f, 45f }
+            double[,] data = {
+                { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
+                { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+                { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+                { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+                { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+                { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
+                { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
             };
 
-            float[,] nextTab = new float[data.GetLength(0), data.GetLength(1)];
+            double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = true;
 
             while (true)

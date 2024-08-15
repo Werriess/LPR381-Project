@@ -50,7 +50,7 @@ namespace LPR381_Project
                     case 2:
                         Console.Clear();
                         SimplexAlgo data = new SimplexAlgo();
-                        float[,] intTable = data.BranchAndBound();
+                        double[,] intTable = data.BranchAndBound();
                         BranchAndBound b = new BranchAndBound();
                         b.SolveBB(intTable);
                         menu = false;

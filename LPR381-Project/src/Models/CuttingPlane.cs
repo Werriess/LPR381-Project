@@ -11,13 +11,13 @@ namespace LPR381_Project.src.Models
         public void SolveCuttingPlane()
         {
             SimplexAlgo s = new SimplexAlgo();
-            float[,] data = s.BranchAndBound();
+            double[,] data = s.BranchAndBound();
 
             int originalRows = data.GetLength(0);
             int cols = data.GetLength(1);
-            int newRows = originalRows + 1; 
+            int newRows = originalRows + 1;
 
-            float[,] newArray = new float[newRows, cols];
+            double[,] newArray = new double[newRows, cols];
 
             for (int i = 0; i < originalRows; i++)
             {

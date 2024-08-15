@@ -5,3 +5,6 @@ C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\
 C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\LPR381-Project.pdb
 C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.exe
 C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-Project.pdb
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\MathNet.Numerics.dll
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\bin\Debug\MathNet.Numerics.xml
+C:\Users\werne\OneDrive\Desktop\Belgium Campus\Third Year\LPR381\LPR381-Project\LPR381-Project\obj\Debug\LPR381-P.E28A001F.Up2Date
