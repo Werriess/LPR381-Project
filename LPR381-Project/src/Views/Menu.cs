@@ -35,25 +35,31 @@ namespace LPR381_Project
                     case 0:
                         Console.Clear();
                         Console.WriteLine("Lets go!");
-                        FileParser reader = new FileParser("Test.txt");
-                        reader.ReadFile();
                         menu = false;
                         break;
 
                     case 1:
                         Console.Clear();
+                        string inputFilePath = "lp_model.txt";
+                        string outputFilePath = "canonical_lp_model.txt";
+
+                        FileParser.TakeInputAndSaveToFile(inputFilePath);
+
+                        double[,] canonicalForm = FileParser.ConvertToCanonicalForm(inputFilePath, outputFilePath);
+
                         SimplexAlgo test = new SimplexAlgo();
-                        double[,] data = {
-                                            { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
-                                            { 11, 8, 6, 14, 10, 10, 1, 0, 0, 0, 0, 0, 0,40 },
-                                            { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
-                                            { 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
-                                            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
-                                            { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
-                                            { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
-                                            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
-            };
-                        test.Simplex(data);
+
+                        for(int i = 0; i < canonicalForm.GetLength(0); i++)
+                        {
+                            for(int j = 0; j < canonicalForm.GetLength(1); j++)
+                            {
+                                Console.Write(canonicalForm[i, j] + "\t");
+                            }
+                            Console.WriteLine();
+                        }
+
+                        test.Simplex(canonicalForm);
+
                         menu = false;
                         break;
 
