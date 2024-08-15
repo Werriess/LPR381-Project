@@ -145,5 +145,14 @@ namespace LPR381_Project.src.Utils
 
             return canonicalFormArray; // Return the 2D array
         }
+
+        public static int GetNumberOfVariables(string inputFilePath)
+        {
+            string[] lines = File.ReadAllLines(inputFilePath);
+
+            string[] objectiveFunctionLineCounter = lines[0].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            return objectiveFunctionLineCounter.Length - 1;
+        }
     }
 }
