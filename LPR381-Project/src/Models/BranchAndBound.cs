@@ -13,9 +13,18 @@ namespace LPR381_Project.src.Models
     {
         public void SolveBB(double[,] data, int xVar, int counter)
         {
+            double[,] lessThanTable = LessThanBranch(data, xVar);
+            double[,] greaterThanTable = GreaterThanBranch(data, xVar);
+
             SimplexAlgo sl = new SimplexAlgo();
-            sl.Simplex(LessThanBranch(data, xVar));
-            sl.Simplex(GreaterThanBranch(data, xVar));
+            sl.Simplex(lessThanTable);
+            sl.Simplex(greaterThanTable);
+
+            if (counter > 0)
+            {
+                SolveBB(lessThanTable, xVar, counter - 1);
+                SolveBB(greaterThanTable, xVar, counter - 1);
+            }
         }
 
         public List<int> FindNonInt(double[,] data)
