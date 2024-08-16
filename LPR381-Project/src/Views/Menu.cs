@@ -145,7 +145,7 @@ namespace LPR381_Project
 
                     case 5:
                         Console.Clear();
-                        string path = "Input.txt";
+                        string path = "InputKnap.txt";
 
                         // Read problem from the text file
                         string[] lines = File.ReadAllLines(path);
