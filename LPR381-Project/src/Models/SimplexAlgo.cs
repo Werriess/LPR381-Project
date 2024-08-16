@@ -8,8 +8,10 @@ namespace LPR381_Project.src.Models
         public void Simplex(double[,] data)
         {
             double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
-            bool dualSimplex = true;
+            bool dualSimplex = LeastNegativeInRhs(data);
             bool maximize = true;
+
+            PrintTableau(data);
 
             while (true)
             {
@@ -17,13 +19,13 @@ namespace LPR381_Project.src.Models
                 {
                     if (!LeastNegativeInRhs(data))
                     {
-                        dualSimplex = false;
+                        dualSimplex = false; 
                         Console.WriteLine("Switching to regular Simplex.");
                         continue;
                     }
-                    else if (!MostNegativeInObj(data))
+                    else if (MostNegativeInObj(data))
                     {
-                        Console.WriteLine("Optimal solution reached.");
+                        Console.WriteLine("Dual: Optimal solution reached.");
                         break;
                     }
 
@@ -32,7 +34,7 @@ namespace LPR381_Project.src.Models
 
                     if (pivotRow == -1 || pivotCol == -1)
                     {
-                        Console.WriteLine("No valid pivot element found.");
+                        Console.WriteLine("No valid pivot element found in Dual Simplex.");
                         break;
                     }
 
@@ -42,15 +44,22 @@ namespace LPR381_Project.src.Models
                 {
                     if (!MostNegativeInObj(data))
                     {
-                        Console.WriteLine("Optimal solution reached.");
+                        Console.WriteLine("Primal: Optimal solution reached.");
                         break;
                     }
 
                     int pivotCol = GetPivotCol(data);
                     int pivotRow = GetPivotRow(data, pivotCol);
 
+                    if (pivotRow == -1 || pivotCol == -1)
+                    {
+                        Console.WriteLine("No valid pivot element found in Primal Simplex.");
+                        break;
+                    }
+
                     NormalizeTable(data, nextTab, pivotRow, pivotCol);
                 }
+
                 PrintTableau(nextTab);
                 Array.Copy(nextTab, data, nextTab.Length);
             }
@@ -79,6 +88,7 @@ namespace LPR381_Project.src.Models
             }
             return false;
         }
+
 
         private int GetDualPivotRow(double[,] data)
         {
@@ -206,7 +216,7 @@ namespace LPR381_Project.src.Models
             {
                 for (int j = 0; j < nextTab.GetLength(1); j++)
                 {
-                    Console.Write(Math.Round(nextTab[i, j], 2) + "\t");
+                    Console.Write(Math.Round(nextTab[i, j], 3) + "\t");
                 }
                 Console.WriteLine();
             }
@@ -227,7 +237,7 @@ namespace LPR381_Project.src.Models
                         dualSimplex = false;
                         continue;
                     }
-                    else if (!MostNegativeInObj(data))
+                    else if (MostNegativeInObj(data))
                     {
                         break;
                     }

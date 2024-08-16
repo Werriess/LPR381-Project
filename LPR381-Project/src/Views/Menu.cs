@@ -19,9 +19,10 @@ namespace LPR381_Project
                 );
 
             Console.WriteLine("Press 1 for the Simplex Algorithm");
-            Console.WriteLine("Press 2 to Branch and Bound");
-            Console.WriteLine("Press 3 to Solve Cutting Plane");
-            Console.WriteLine("Press 4 for Knapsack");
+            Console.WriteLine("Press 2 for the Revised Simplex Algorithm");
+            Console.WriteLine("Press 3 to Branch and Bound");
+            Console.WriteLine("Press 4 to Solve Cutting Plane");
+            Console.WriteLine("Press 5 for Knapsack");
             Console.WriteLine("Press 0 to exit");
 
             int input = int.Parse(Console.ReadLine());
@@ -76,6 +77,11 @@ namespace LPR381_Project
 
                     case 2:
                         Console.Clear();
+                        menu = false ;
+                    break;
+
+                    case 3:
+                        Console.Clear();
                         SimplexAlgo dataT = new SimplexAlgo();
                         double[,] dat = {
                                             { -2, -3, -3, -5, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -105,7 +111,7 @@ namespace LPR381_Project
                             Console.WriteLine("Invalid input");
                         }
                         break;
-                    case 3:
+                    case 4:
                         Console.Clear();
                         CuttingPlane plane = new CuttingPlane();
                         SimplexAlgo sAlgo = new SimplexAlgo();
@@ -137,7 +143,7 @@ namespace LPR381_Project
                         }
                         break;
 
-                    case 4:
+                    case 5:
                         Console.Clear();
                         KnapOrginal kp = new KnapOrginal();
                         kp.KnapSackRound(40);

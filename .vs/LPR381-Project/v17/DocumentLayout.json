@@ -3,36 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|c:\\users\\werne\\onedrive\\desktop\\belgium campus\\third year\\lpr381\\lpr381-project\\lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|c:\\users\\werne\\onedrive\\desktop\\belgium campus\\third year\\lpr381\\lpr381-project\\lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|c:\\users\\werne\\onedrive\\desktop\\belgium campus\\third year\\lpr381\\lpr381-project\\lpr381-project\\src\\models\\simplexalgo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\simplexalgo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\branchandbound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\branchandbound.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\tester\\knaporginal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\tester\\knaporginal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\revisedsimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\revisedsimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\tester\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\tester\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\views\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\simplexalgo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\simplexalgo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\cuttingplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\models\\tester\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\models\\tester\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2699666F-6626-4B5E-A593-DE6564859196}|LPR381-Project\\LPR381-Project.csproj|solutionrelative:lpr381-project\\src\\utils\\fileparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,26 +82,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "KnapOrginal.cs",
-              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
-              "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
-              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
-              "RelativeToolTip": "LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "RevisedSimplex.cs",
+              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\RevisedSimplex.cs",
+              "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\RevisedSimplex.cs",
+              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\RevisedSimplex.cs",
+              "RelativeToolTip": "LPR381-Project\\src\\Models\\RevisedSimplex.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T14:45:21.175Z",
+              "WhenOpened": "2024-08-15T22:44:57.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Item.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\Item.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\Tester\\Item.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\Item.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Models\\Tester\\Item.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-13T14:32:31.929Z",
               "EditorCaption": ""
@@ -105,77 +109,90 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "KnapOrginal.cs",
+              "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
+              "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
+              "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
+              "RelativeToolTip": "LPR381-Project\\src\\Models\\Tester\\KnapOrginal.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwBwAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-14T14:45:21.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "BranchAndBound.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\BranchAndBound.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\BranchAndBound.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\BranchAndBound.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Models\\BranchAndBound.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGoAAAA7AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-14T10:01:50.571Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "SimplexAlgo.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\SimplexAlgo.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\SimplexAlgo.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\SimplexAlgo.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Models\\SimplexAlgo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAUAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAsAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-13T20:17:16.383Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "CuttingPlane.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\CuttingPlane.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Models\\CuttingPlane.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Models\\CuttingPlane.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Models\\CuttingPlane.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAC4AAAAkAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAqwD8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-14T12:59:04.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Views\\Menu.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Views\\Menu.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Views\\Menu.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Views\\Menu.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAAAJwAAAAZAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAAAIcAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-31T11:39:51.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\Program.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\Program.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\Program.cs",
               "RelativeToolTip": "LPR381-Project\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-31T11:39:35.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "FileParser.cs",
               "DocumentMoniker": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Utils\\FileParser.cs",
               "RelativeDocumentMoniker": "LPR381-Project\\src\\Utils\\FileParser.cs",
               "ToolTip": "C:\\Users\\werne\\OneDrive\\Desktop\\Belgium Campus\\Third Year\\LPR381\\LPR381-Project\\LPR381-Project\\src\\Utils\\FileParser.cs",
               "RelativeToolTip": "LPR381-Project\\src\\Utils\\FileParser.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAqwJ4AAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwFgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-15T19:39:37.383Z",
               "EditorCaption": ""
