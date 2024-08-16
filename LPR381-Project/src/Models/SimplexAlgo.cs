@@ -5,11 +5,11 @@ namespace LPR381_Project.src.Models
 {
     internal class SimplexAlgo
     {
-        public void Simplex(double[,] data)
+        public void Simplex(double[,] data, bool maximize)
         {
             double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = LeastNegativeInRhs(data);
-            bool maximize = true;
+            bool maxProblem = maximize;
 
             PrintTableau(data);
 
@@ -19,11 +19,13 @@ namespace LPR381_Project.src.Models
                 {
                     if (!LeastNegativeInRhs(data))
                     {
-                        dualSimplex = false; 
-                        Console.WriteLine("Switching to regular Simplex.");
+                        dualSimplex = false;
                         continue;
                     }
-                    else if (MostNegativeInObj(data))
+
+                    bool optimalCondition = maxProblem ? MostNegativeInObj(data) : MostPositiveInObj(data);
+
+                    if (optimalCondition)
                     {
                         Console.WriteLine("Dual: Optimal solution reached.");
                         break;
@@ -42,13 +44,15 @@ namespace LPR381_Project.src.Models
                 }
                 else
                 {
-                    if (!MostNegativeInObj(data))
+                    bool optimal = maxProblem ? !MostNegativeInObj(data) : !MostPositiveInObj(data);
+                    if (optimal)
                     {
-                        Console.WriteLine("Primal: Optimal solution reached.");
+                        Console.WriteLine("Optimal solution reached.");
                         break;
                     }
 
-                    int pivotCol = GetPivotCol(data);
+                    // Select pivot column based on problem type
+                    int pivotCol = maxProblem ? GetPivotColMax(data) : GetPivotColMin(data);
                     int pivotRow = GetPivotRow(data, pivotCol);
 
                     if (pivotRow == -1 || pivotCol == -1)
@@ -59,7 +63,6 @@ namespace LPR381_Project.src.Models
 
                     NormalizeTable(data, nextTab, pivotRow, pivotCol);
                 }
-
                 PrintTableau(nextTab);
                 Array.Copy(nextTab, data, nextTab.Length);
             }
@@ -82,6 +85,18 @@ namespace LPR381_Project.src.Models
             for (int i = 1; i < data.GetLength(0); i++)
             {
                 if (data[i, data.GetLength(1) - 1] < 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool MostPositiveInObj(double[,] data)
+        {
+            for (int i = 0; i < data.GetLength(1) - 1; i++)
+            {
+                if (data[0, i] > 0)
                 {
                     return true;
                 }
@@ -134,7 +149,7 @@ namespace LPR381_Project.src.Models
             return pivotCol;
         }
 
-        private int GetPivotCol(double[,] data)
+        private int GetPivotColMax(double[,] data)
         {
             //For a max problem, get the biggest negative value in obj row
             double minValue = data[0, 0];
@@ -145,6 +160,24 @@ namespace LPR381_Project.src.Models
                 if (data[0, j] < minValue)
                 {
                     minValue = data[0, j];
+                    pivotCol = j;
+                }
+            }
+
+            return pivotCol;
+        }
+
+        private int GetPivotColMin(double[,] data)
+        {
+            //For a max problem, get the biggest positive value in obj row
+            double maxValue = data[0, 0];
+            int pivotCol = 0;
+
+            for (int j = 1; j < data.GetLength(1) - 1; j++)
+            {
+                if (data[0, j] > maxValue)
+                {
+                    maxValue = data[0, j];
                     pivotCol = j;
                 }
             }
@@ -223,10 +256,11 @@ namespace LPR381_Project.src.Models
             Console.WriteLine();
         }
 
-        public double[,] BranchAndBound(double[,] data)
+        public double[,] BranchAndBound(double[,] data, bool maximization)
         {
             double[,] nextTab = new double[data.GetLength(0), data.GetLength(1)];
             bool dualSimplex = true;
+            bool maxProblem = maximization;
 
             while (true)
             {
@@ -237,7 +271,10 @@ namespace LPR381_Project.src.Models
                         dualSimplex = false;
                         continue;
                     }
-                    else if (MostNegativeInObj(data))
+
+                    bool optimalCondition = maxProblem ? MostNegativeInObj(data) : MostPositiveInObj(data);
+
+                    if (optimalCondition)
                     {
                         break;
                     }
@@ -247,6 +284,7 @@ namespace LPR381_Project.src.Models
 
                     if (pivotRow == -1 || pivotCol == -1)
                     {
+                        Console.WriteLine("No valid pivot element found in Dual");
                         break;
                     }
 
@@ -254,16 +292,25 @@ namespace LPR381_Project.src.Models
                 }
                 else
                 {
-                    if (!MostNegativeInObj(data))
+                    bool optimal = maxProblem ? !MostNegativeInObj(data) : !MostPositiveInObj(data);
+                    if (optimal)
                     {
                         break;
                     }
 
-                    int pivotCol = GetPivotCol(data);
+                    // Select pivot column based on problem type
+                    int pivotCol = maxProblem ? GetPivotColMax(data) : GetPivotColMin(data);
                     int pivotRow = GetPivotRow(data, pivotCol);
+
+                    if (pivotRow == -1 || pivotCol == -1)
+                    {
+                        Console.WriteLine("No valid pivot element found in Primal Simplex.");
+                        break;
+                    }
 
                     NormalizeTable(data, nextTab, pivotRow, pivotCol);
                 }
+                PrintTableau(nextTab);
                 Array.Copy(nextTab, data, nextTab.Length);
             }
             return data;

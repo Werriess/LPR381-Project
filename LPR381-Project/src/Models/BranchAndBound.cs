@@ -11,19 +11,19 @@ namespace LPR381_Project.src.Models
 {
     internal class BranchAndBound
     {
-        public void SolveBB(double[,] data, int xVar, int counter)
+        public void SolveBB(double[,] data, int xVar, int counter, bool problemType)
         {
             double[,] lessThanTable = LessThanBranch(data, xVar);
             double[,] greaterThanTable = GreaterThanBranch(data, xVar);
 
             SimplexAlgo sl = new SimplexAlgo();
-            sl.Simplex(lessThanTable);
-            sl.Simplex(greaterThanTable);
+            sl.Simplex(lessThanTable, problemType);
+            sl.Simplex(greaterThanTable, problemType);
 
             if (counter > 0)
             {
-                SolveBB(lessThanTable, xVar, counter - 1);
-                SolveBB(greaterThanTable, xVar, counter - 1);
+                SolveBB(lessThanTable, xVar, counter - 1, problemType);
+                SolveBB(greaterThanTable, xVar, counter - 1, problemType);
             }
         }
 

@@ -15,14 +15,23 @@ namespace LPR381_Project.src.Models
             int newRows = originalRows + 1;
 
             Matrix<double> tester2 = Matrix<double>.Build.Dense(newRows, cols + 1);
+            Matrix<double> clone = Matrix<double>.Build.Dense(originalRows, cols);
+
 
             for (int i = 0; i < originalRows; i++)
             {
                 for (int j = 0; j < cols; j++)
                 {
                     tester2[i, j] = data[i, j];
+                    clone[i, j] = data[i,j];
                 }
             }
+
+            int basicVColumn = bb.GetBasicVariables(data, xVar);
+
+            Console.WriteLine(clone.ToString());
+            Console.WriteLine($"Cut on x{basicVColumn}");
+
 
             int lastColIndex = tester2.ColumnCount - 1;
             int secondLastColIndex = tester2.ColumnCount - 2;
@@ -30,7 +39,6 @@ namespace LPR381_Project.src.Models
             tester2.SetColumn(secondLastColIndex, tester2.Column(lastColIndex));
             tester2.SetColumn(lastColIndex, Vector<double>.Build.Dense(tempColumn));
 
-            int basicVColumn = bb.GetBasicVariables(data, xVar);
             int rowToSubtractFrom = originalRows;
             int rowToSubtract = bb.GetBranchRow(data, xVar);
 
@@ -44,6 +52,7 @@ namespace LPR381_Project.src.Models
             tester2[rowToSubtractFrom, secondLastColIndex] = 1;
 
             Console.WriteLine(tester2.ToString());
+            
             double[,] updatedTable = tester2.ToArray();
 
             return updatedTable;
