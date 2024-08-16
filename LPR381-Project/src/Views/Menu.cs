@@ -95,8 +95,8 @@ namespace LPR381_Project
             };
                         int vCount = FileParser.GetNumberOfVariables("lp_model.txt");
                         BranchAndBound b = new BranchAndBound();
-                        b.SolveBB(dataT.BranchAndBound(dat), vCount, 15);
-
+                        b.SolveBB(dataT.BranchAndBound(dat), vCount, 5);
+                         
                         Console.WriteLine("\nPress 0 to go back");
                         int inputBB = int.Parse(Console.ReadLine());
 

@@ -216,7 +216,7 @@ namespace LPR381_Project.src.Models
             {
                 for (int j = 0; j < nextTab.GetLength(1); j++)
                 {
-                    Console.Write(Math.Round(nextTab[i, j], 3) + "\t");
+                    Console.Write("{0,8:F3}\t", nextTab[i, j]);
                 }
                 Console.WriteLine();
             }
