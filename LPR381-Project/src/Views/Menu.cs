@@ -146,7 +146,11 @@ namespace LPR381_Project
                     case 5:
                         Console.Clear();
                         KnapOrginal kp = new KnapOrginal();
-                        kp.KnapSackRound(40);
+                        double[,] dataKnap = { 
+                            { 2, 3, 5, 2, 4, 0},
+                            { 11, 8, 14, 10, 10,40 },
+                        };
+                        kp.KnapSackRound(dataKnap[1, dataKnap.GetLength(1)-1], 5, 5, dataKnap);
 
                         Console.WriteLine("\nPress 0 to go back");
                         int inputKP = int.Parse(Console.ReadLine());
