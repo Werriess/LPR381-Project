@@ -14,9 +14,8 @@ namespace LPR381_Project.src.Models
         public void SolveBB(double[,] data, int xVar, int counter)
         {
             SimplexAlgo sl = new SimplexAlgo();
-            sl.Simplex(GreaterThanBranch(data, 6));
-            sl.Simplex(LessThanBranch(data, 6));
-            
+            sl.Simplex(LessThanBranch(data, xVar));
+            sl.Simplex(GreaterThanBranch(data, xVar));
         }
 
         public List<int> FindNonInt(double[,] data)
@@ -117,8 +116,8 @@ namespace LPR381_Project.src.Models
             tester2.SetRow(rowToSubtractFrom, resultRow);
 
             Console.WriteLine(tester2.ToString());
-            double[,] ekWeetNieMeerNie = tester2.ToArray();
-            return ekWeetNieMeerNie;
+            double[,] updatedTable = tester2.ToArray();
+            return updatedTable;
         }
 
         public double[,] GreaterThanBranch(double[,] data, int xVar)
@@ -160,8 +159,8 @@ namespace LPR381_Project.src.Models
             tester2.SetRow(rowToSubtractFrom, resultRow);
 
             Console.WriteLine(tester2.ToString());
-            double[,] ekWeetNieMeerNie = tester2.ToArray();
-            return ekWeetNieMeerNie;
+            double[,] updatedTable = tester2.ToArray();
+            return updatedTable;
         }
 
     }

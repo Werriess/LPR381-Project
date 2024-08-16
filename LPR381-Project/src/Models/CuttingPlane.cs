@@ -8,6 +8,7 @@ namespace LPR381_Project.src.Models
         public double[,] SolveCuttingPlane(double[,] data, int xVar)
         {
             BranchAndBound bb = new BranchAndBound();
+            SimplexAlgo simplex = new SimplexAlgo();
 
             int originalRows = data.GetLength(0);
             int cols = data.GetLength(1);
@@ -43,8 +44,9 @@ namespace LPR381_Project.src.Models
             tester2[rowToSubtractFrom, secondLastColIndex] = 1;
 
             Console.WriteLine(tester2.ToString());
-            double[,] ekWeetNieMeerNie = tester2.ToArray();
-            return ekWeetNieMeerNie;
+            double[,] updatedTable = tester2.ToArray();
+
+            return updatedTable;
         }
 
         public double Mod(double value, double divisor)

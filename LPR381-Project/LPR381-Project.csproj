@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="src\Models\BranchAndBound.cs" />
     <Compile Include="src\Models\CuttingPlane.cs" />
+    <Compile Include="src\Models\RevisedSimplex.cs" />
     <Compile Include="src\Models\Tester\Item.cs" />
     <Compile Include="src\Models\Tester\KnapOrginal.cs" />
     <Compile Include="src\Models\Tester\KnapSubOne.cs" />
