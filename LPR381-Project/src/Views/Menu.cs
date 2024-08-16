@@ -145,22 +145,35 @@ namespace LPR381_Project
 
                     case 5:
                         Console.Clear();
-                        KnapOrginal kp = new KnapOrginal();
-                        kp.KnapSackRound(40);
+                        string path = "Input.txt";
 
-                        Console.WriteLine("\nPress 0 to go back");
-                        int inputKP = int.Parse(Console.ReadLine());
+                        // Read problem from the text file
+                        string[] lines = File.ReadAllLines(path);
+                        string objectiveFunction = lines[0];
+                        string constraint = lines[1];
 
-                        if (inputKP == 0)
+                        // This is to get the objective function values [1,2,3,4,5] etc
+                        objectiveFunction = objectiveFunction.Replace("max", "").Replace("+", "").Trim();
+                        string[] objArr = objectiveFunction.Split(' ');
+
+                        // This is to get the constraint values [1,2,3,4,5] etc
+                        constraint = constraint.Replace("<=", "").Trim();
+                        string[] constraintArr = constraint.Split(' ');
+
+                        List<ObjVariables> items = new List<ObjVariables>();
+
+                        //This gets the weight from the parsed constraint array
+                        int weight = int.Parse(constraintArr[constraintArr.Length - 1]);
+
+                        for (int i = 0; i < objArr.Length; i++)
                         {
-                            Console.Clear();
-                            Run();
+                            int value = int.Parse(objArr[i]);
+                            int itemWeight = int.Parse(constraintArr[i]);
+                            items.Add(new ObjVariables(itemWeight, value, i + 1));
                         }
-                        else
-                        {
-                            menu = false;
-                            Console.WriteLine("Invalid input");
-                        }
+
+                        int maxValue = Knapsack.SolveKnapsack(weight, items);
+                        Console.WriteLine("Optimal Solution = " + maxValue);
                     break;
 
                     default:
