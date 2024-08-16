@@ -59,7 +59,7 @@ namespace LPR381_Project
                             Console.WriteLine();
                         }
 
-                        test.Simplex(canonicalForm);
+                        test.Simplex(canonicalForm, true);
                         Console.WriteLine("\nPress 0 to go back");
                         int inputSS = int.Parse(Console.ReadLine());
 
@@ -95,7 +95,7 @@ namespace LPR381_Project
             };
                         int vCount = FileParser.GetNumberOfVariables("lp_model.txt");
                         BranchAndBound b = new BranchAndBound();
-                        b.SolveBB(dataT.BranchAndBound(dat), vCount, 5);
+                        b.SolveBB(dataT.BranchAndBound(dat, true), vCount, 5, true);
                          
                         Console.WriteLine("\nPress 0 to go back");
                         int inputBB = int.Parse(Console.ReadLine());
@@ -126,8 +126,8 @@ namespace LPR381_Project
                                             { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 },
             };
                         int vCountTwo = FileParser.GetNumberOfVariables("lp_model.txt");
-                        double[,] cuttingPlaneResult = plane.SolveCuttingPlane(sAlgo.BranchAndBound(dataNew), vCountTwo);
-                        sAlgo.Simplex(cuttingPlaneResult);
+                        double[,] cuttingPlaneResult = plane.SolveCuttingPlane(sAlgo.BranchAndBound(dataNew, true), vCountTwo);
+                        sAlgo.Simplex(cuttingPlaneResult, true);
                         Console.WriteLine("\nPress 0 to go back");
                         int inputCP = int.Parse(Console.ReadLine());
 
