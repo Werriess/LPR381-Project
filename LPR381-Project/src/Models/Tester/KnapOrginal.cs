@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Xml.Schema;
 using LPR381_Project.src.Models.Tester;
 
@@ -8,33 +9,53 @@ namespace LPR381_Project.src.Models.Tester
     internal class KnapOrginal
     {
         public List<Item> myItems = new List<Item>();
-        public void KnapSackRound(double maxWeight)
+        public void KnapSackRound(double maxWeight, int counter, int amountVar, double[,] data)
         {
+            GetItems(data, amountVar);
+            double[,] ds = MainStructure(amountVar);
 
-            GetItems();
-            SortRatios();
-            BranchKnap(maxWeight);
+            for (int i = 0; i < ds.GetLength(0); i++)
+            {
+                for (int j = 0; j < ds.GetLength(1); j++)
+                {
+                    Console.WriteLine(ds[i, j]);
+                }
+            }
+            
+         
+            BranchKnap(maxWeight, counter);
+            
+
+           
             foreach (Item item in myItems)
             {
                 Console.WriteLine($"{item.Name}: {Math.Round(item.Ratio,2)} {item.Chosen} {item.Subtract}");
             }
         }
 
-        public void GetItems()
+        public double[,] MainStructure(int amountVar)
         {
-            Item itemOne = new Item("x1", 1, 2, 11, 1, 0);
-            Item itemTwo = new Item("x2", 1, 3, 8, 1, 0);
-            Item itemThree = new Item("x3", 1, 3, 6, 1, 0);
-            Item itemFour = new Item("x4", 1, 5, 14, 1, 0);
-            Item itemFive = new Item("x5", 1, 2, 10, 1, 0);
-            Item itemSix = new Item("x6", 1, 4, 10, 1, 0);
+            double[,] letSee = new double[3, amountVar];
 
-            myItems.Add(itemOne);
-            myItems.Add(itemTwo);
-            myItems.Add(itemThree);
-            myItems.Add(itemFour);
-            myItems.Add(itemFive);
-            myItems.Add(itemSix);
+            for (int j = 0; j < amountVar; j++)
+            {
+                if (j < myItems.Count)
+                {
+                    letSee[0, j] = myItems[j].Ratio;
+                    letSee[1, j] = myItems[j].Chosen;
+                    letSee[2, j] = myItems[j].Subtract;
+                }
+            }
+            return letSee;
+        }
+
+        public void GetItems(double[,] data, int count)
+        {
+            for (int i = 0; i <= count; i++)
+            {
+                Item item = new Item($"x{i + 1}", 1, data[0, i], data[1, i], 1, 0);
+                myItems.Add(item);
+            }
         }
 
         public void BranchOnInclude(string include, double maxWeight)
@@ -78,11 +99,13 @@ namespace LPR381_Project.src.Models.Tester
             return branch;
         }
 
-        public void BranchKnap(double maxWeight)
+        public void BranchKnap(double maxWeight, int counter)
         {
+            SortRatios();
             string variable = BranchOn();
             BranchOnInclude(variable, maxWeight);
             BranchOnExclude(variable, maxWeight);
+            
         }
 
         public void SubtractWeights(double maxWeight)

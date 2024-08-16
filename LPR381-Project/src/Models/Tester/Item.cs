@@ -14,6 +14,7 @@ namespace LPR381_Project.src.Models.Tester
         public double Ratio { get; set; }
         public int Cofficient { get; set; }
         public int Chosen { get; set; }
+
         public double Subtract { get; set; }
 
         public Item(string name, int coefficient, double value, double weight, int chosen, double subtract)
